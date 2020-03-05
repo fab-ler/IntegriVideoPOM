@@ -5,12 +5,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.ChatPage;
+import pages.SettingsPage;
 
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     ChatPage chatPage;
+    SettingsPage settingsPage;
     private WebDriver driver;
+
 
     @BeforeMethod
     public void setDriver() {
@@ -20,6 +23,7 @@ public class BaseTest {
         driver.manage().window().maximize();
 
         chatPage = new ChatPage(driver);
+        settingsPage = new SettingsPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
