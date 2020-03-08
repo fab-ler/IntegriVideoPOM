@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import static org.testng.Assert.assertEquals;
 
-public class SettingsPage extends BasePage {
+public class SettingsModal extends BasePage {
 
     By userName = By.name("userName");
     By userEmail = By.name("userEmail");
@@ -14,7 +14,7 @@ public class SettingsPage extends BasePage {
     By closeIcon = By.xpath(("//*[contains(text(),'Settings')]//*[contains(@class,'close-integri-modal')]"));
     By saveButton = By.cssSelector(".integri-user-settings-save.integri-button-blue");
 
-    public SettingsPage(WebDriver driver) {
+    public SettingsModal(WebDriver driver) {
         super(driver);
     }
 
