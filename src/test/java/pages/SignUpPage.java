@@ -11,7 +11,7 @@ public class SignUpPage extends BasePage {
     By emailInput = By.name("email");
     By passwordInput = By.name("password");
     By signUpButton = By.cssSelector(".btn.btn-primary");
-    By alertMessage = By.id("flash");
+    By alertMessage = By.xpath("//*[contains(text(),'Message with instructions was sent')]");
 
     public SignUpPage(WebDriver driver) {
         super(driver);
@@ -37,7 +37,11 @@ public class SignUpPage extends BasePage {
         driver.findElement(signUpButton).click();
     }
 
-    public void verifyMessageTextAlert(String alert) {
-        assertEquals(driver.findElement(alertMessage).getAttribute("value"), "Message with instructions was sent");
+    public void find() {
+        driver.findElement(alertMessage);
+    }
+
+    public void verifyMessageTextAlert(String expectedMessage) {
+        assertEquals(driver.findElement(alertMessage), expectedMessage);
     }
 }
