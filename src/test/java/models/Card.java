@@ -44,7 +44,4 @@ public class Card {
     public void setCardHolder(String cardHolder) {
         this.cardHolder = cardHolder;
     }
-
-    public CharSequence getCartNumber() {
-    }
 }

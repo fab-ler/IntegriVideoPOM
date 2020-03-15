@@ -7,18 +7,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.BillingPage;
 import pages.LoginPage;
 import pages.ProjectPage;
 import pages.SignUpPage;
 
 import java.util.concurrent.TimeUnit;
 
+//import pages.BillingPage;
+
 public class BaseTest {
     ProjectPage projectPage;
     SignUpPage signUpPage;
     LoginPage loginPage;
-    BillingPage billingPage;
+    //    BillingPage billingPage;
     User user;
     Card card;
     Project project;
@@ -34,9 +35,9 @@ public class BaseTest {
         signUpPage = new SignUpPage(driver);
         loginPage = new LoginPage(driver);
         projectPage = new ProjectPage(driver);
-        billingPage = new BillingPage(driver);
+        //      billingPage = new BillingPage(driver);
         user = new User("hkj@mailinator.com", "0123456789");
-        card = new Card(4242424242424242, 11, 2021, "Mike Brown");
+        card = new Card("4242424242424242", "11", "2021", "Mike Brown");
         project = new Project("test.io", "some extra data will be here");
     }
 
