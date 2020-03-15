@@ -8,6 +8,10 @@ import static org.testng.Assert.assertEquals;
 
 public class SignUpPage extends BasePage {
 
+    public BasePage isPageOpened() {
+        return null;
+    }
+
     By emailInput = By.name("email");
     By passwordInput = By.name("password");
     By signUpButton = By.cssSelector(".btn.btn-primary");
@@ -17,8 +21,9 @@ public class SignUpPage extends BasePage {
         super(driver);
     }
 
-    public void openPage() {
+    public SignUpPage openPage() {
         driver.get("https://dev.integrivideo.com/signup");
+        return this;
     }
 
     public void loginInput(String emailValue) {

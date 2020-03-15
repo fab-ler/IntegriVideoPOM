@@ -1,19 +1,21 @@
 package tests;
 
+import models.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.AddProjectsPage;
 import pages.LoginPage;
+import pages.ProjectPage;
 import pages.SignUpPage;
 
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
+    ProjectPage projectPage;
     SignUpPage signUpPage;
     LoginPage loginPage;
-    AddProjectsPage addProjectsPage;
+    User user;
     private WebDriver driver;
 
     @BeforeMethod
@@ -24,7 +26,9 @@ public class BaseTest {
         driver.manage().window().maximize();
         signUpPage = new SignUpPage(driver);
         loginPage = new LoginPage(driver);
-        addProjectsPage = new AddProjectsPage(driver);
+        projectPage = new ProjectPage(driver);
+        user = new User("hkj@mailinator.com", "0123456789");
+        ;
     }
 
     @AfterMethod(alwaysRun = true)

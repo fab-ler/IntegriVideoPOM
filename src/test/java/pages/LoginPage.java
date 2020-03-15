@@ -1,36 +1,60 @@
 package pages;
+/*
+переписать под PageFactory
+ */
 
-import org.openqa.selenium.By;
+import models.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
 
-    By userEmail = By.name("email");
-    By userPassword = By.name("password");
-    By loginButton = By.xpath("//*[text()='Log in']");
+    @FindBy(name = "email")
+    WebElement emailField;
+    @FindBy(name = "password")
+    WebElement passwordField;
+    @FindBy(xpath = "//*[text()='Log in']")
+    WebElement loginButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    public void openPage() {
+    public LoginPage isPageOpened() {
+        wait.until(ExpectedConditions.visibilityOf(loginButton));
+        return this;
+    }
+
+    public LoginPage openPage() {
         driver.get("https://dev.integrivideo.com/login");
+        isPageOpened();
+        return this;
     }
 
-    public void userLoginInput(String userEmailValue) {
-        WebElement loginField = driver.findElement(userEmail);
-        loginField.click();
-        loginField.sendKeys(userEmailValue);
+    public LoginPage writeEmail(String email) {
+        emailField.sendKeys(email);
+        return this;
     }
 
-    public void userPasswordInput(String userPasswordValue) {
-        WebElement passwordField = driver.findElement(userPassword);
-        passwordField.click();
-        passwordField.sendKeys(userPasswordValue);
+    public LoginPage writePassword(String password) {
+        passwordField.sendKeys(password);
+        return this;
     }
 
-    public void clickLoginButton() {
-        driver.findElement(loginButton).click();
+    public ProjectPage clickLogin() {
+        loginButton.click();
+        ProjectPage projects = new ProjectPage(driver);
+        projects.isPageOpened();
+        return projects;
+    }
+
+    public void login(User user) {
+        writeEmail(user.getEmail());
+        writePassword(user.getPassword());
+        clickLogin();
     }
 }

@@ -1,14 +1,15 @@
 package tests;
 
+import models.User;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
     @Test
-    public void logIn() {
-        loginPage.openPage();
-        loginPage.userLoginInput("hkj@mailinator.com");
-        loginPage.userPasswordInput("0123456789");
-        loginPage.clickLoginButton();
+    public void login() {
+        User user = new User("hkj@mailinator.com", "0123456789");
+        loginPage
+                .openPage()
+                .login(user);
     }
 }
