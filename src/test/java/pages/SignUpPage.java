@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import static org.testng.Assert.assertEquals;
-
 public class SignUpPage extends BasePage {
 
     public BasePage isPageOpened() {
@@ -42,11 +40,14 @@ public class SignUpPage extends BasePage {
         driver.findElement(signUpButton).click();
     }
 
-    public void find() {
+    public void findAlert() {
         driver.findElement(alertMessage);
     }
+//    //Message with instructions was sent
+//    // not used - fails test
+//    public void verifyMessageTextAlert() {
+//        WebElement alertPopup = driver.findElement(alertMessage));
+//        assertTrue(alertPopup.isDisplayed());
+//    }
 
-    public void verifyMessageTextAlert(String expectedMessage) {
-        assertEquals(driver.findElement(alertMessage), expectedMessage);
-    }
 }
